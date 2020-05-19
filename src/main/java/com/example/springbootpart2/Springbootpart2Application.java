@@ -20,7 +20,7 @@ public class Springbootpart2Application implements CommandLineRunner {
 
 		try {
 			userServiceImpl.addUser(5, "Simcar", "Mahlangu"); //Prints the added user on a console
-			System.out.println(userServiceImpl.getUser(3)); //Prints a selected user name and surname on a console
+			userServiceImpl.getUser(3); //Prints a selected user name and surname on a console
 			userServiceImpl.removeUser(4); //Prints a removed user name and surname on a console
 		}catch (Exception e){
 			e.getStackTrace();

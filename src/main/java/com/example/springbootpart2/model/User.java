@@ -6,6 +6,7 @@ public class User {
     private static String surname;
 
     public User(Long id, String name, String surname) {
+        super();
         Id = id;
         this.name = name;
         this.surname = surname;
