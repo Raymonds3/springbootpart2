@@ -1,9 +1,9 @@
 package com.example.springbootpart2.services;
 
 public interface UserService {
-    void addUser(long id, String name, String surname);
+    String addUser(long id, String name, String surname);
 
-    String getUser(int id);
+    String getUser(long id);
 
-    void removeUser(int id);
+    String removeUser(long id);
 }

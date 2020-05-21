@@ -13,16 +13,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private FakeRepo fakeRepo;
 
-    public void addUser(long id, String name, String surname) {
+    public String addUser(long id, String name, String surname) {
         User user = fakeRepo.insertUser(id, name, surname);
-        String Name = user.getName() + " " + user.getSurname()+ " was Entered";
-        System.out.println("\n"+Name);
+        return String.format("%s %s was Entered",
+                user.getName(), user.getSurname());
     }
 
     @Cacheable("user")
-    public String getUser(int id) {
+    public String getUser(long id) {
         User user = fakeRepo.findUserById(id);
-        String find = "Hello "+ user.getName()+" "+user.getSurname();
 
         try {
             System.out.println("Going to sleep for 5 Secs.. to simulate backend call.");
@@ -31,12 +30,13 @@ public class UserServiceImpl implements UserService {
             e.printStackTrace();
         }
 
-        return find;
+        return String.format("Hello %s %s",
+                user.getName(), user.getSurname());
     }
 
-    public void removeUser(int id) {
+    public String removeUser(long id) {
         User user = fakeRepo.deleteUser(id);
-        String delete = user.getName()+" "+user.getSurname()+" was Deleted";
-        System.out.println("\n"+delete);
+        return String.format("%s %s was Deleted",
+                user.getName(), user.getSurname());
     }
 }
